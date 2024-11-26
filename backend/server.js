@@ -35,7 +35,7 @@ app.post("/users", async(req,res)=>{
         await newUser.save()
         res.status(201).json({
             message: 'User created successfully',
-            user: { name: newUser.name,password:newUser.password, email: newUser.email, role: newUser.role },
+            user: { email,password },
           });
         } catch (err) {
           console.error(err);

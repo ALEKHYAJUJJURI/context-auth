@@ -1,6 +1,7 @@
 import {Form,Input,Button} from 'antd'
 import { useContext, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios'
 import AuthContext from '../context/AuthContext'
 
 
@@ -10,9 +11,16 @@ export default function Login(){
     const [users,setUsers] = useState()
     const navigate = useNavigate()
    async function handleSubmit(values){
-        const response = await ax
-
-   navigate('/home')
+   try{
+    const {email,password} = values
+    const response = await axios.post('http://loaclhost:3500/users',{email,Password})
+    console.log(response.data)
+    setUser({email,password})
+navigate('/home')
+   }
+   catch (err){
+    console.log(err)
+   }
 
     
     }
